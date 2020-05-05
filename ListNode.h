@@ -5,13 +5,13 @@ using namespace std;
 template <class T>
 class ListNode{
   public:
-    ListNode();
-    ListNode(T d);
-    ~ListNode();
-
     T data;
     ListNode *next;
     ListNode *prev;
+    
+    ListNode();
+    ListNode(T d);
+    ~ListNode();
 };
 
 template <class T>
@@ -28,5 +28,5 @@ ListNode<T>::ListNode(T d){
 
 template <class T>
 ListNode<T>::~ListNode(){
-  
+
 }
