@@ -5,13 +5,13 @@ using namespace std;
 template <class T>
 class TreeNode{
   public:
-    TreeNode();
-    TreeNode(T k);
-    virtual ~TreeNode();
-
     T key;
     TreeNode *left;
     TreeNode *right;
+
+    TreeNode();
+    TreeNode(T k);
+    virtual ~TreeNode();
 };
 
 template <class T>
