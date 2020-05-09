@@ -15,7 +15,7 @@ class BST{
     T search(T val);
     void printTree();
     void recPrint(TreeNode<T> *node);
-    TreeNode<T>* getSucc(Treenode<T> *d);
+    TreeNode<T>* getSucc(TreeNode<T> *d);
     void treeToFile(ofstream& file);
     void treeToFile(TreeNode<T>* root, ofstream& file);
   private:
@@ -44,10 +44,10 @@ void BST<T>::insert(T val){
     TreeNode<T>* curr = root;
     TreeNode<T>* parent;
     while(true){
-      parent = current;
+      parent = curr;
       if(val < curr->key){
         curr = curr->left;
-        if(cuff == NULL){
+        if(curr == NULL){
           parent->left = node;
           break;
         }
@@ -132,7 +132,7 @@ bool BST<T>::deleteRec(T k){
     } else if(isLeft){
       parent->left = succ;
     } else{
-      parent->rigth = succ;
+      parent->right = succ;
     }
     succ->left = curr->left;
     return true;
