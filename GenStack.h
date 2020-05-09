@@ -39,7 +39,7 @@ GenStack<T>::~GenStack(){
 
 template <class T>
 void GenStack<T>::push(T d){
-  if(!this->isFUll()){
+  if(!this->isFull()){
     myArray[++top] = d;
   } else{
     this->grow();
@@ -48,7 +48,7 @@ void GenStack<T>::push(T d){
 
 template <class T>
 T GenStack<T>::pop(){
-  if(!this->Empty()){
+  if(!this->isEmpty()){
     return myArray[top--];
   } else{
     throw std::invalid_argument("Stack Empty");
