@@ -8,15 +8,15 @@ class Data{
     BST<Student> *masterStudent;
     BST<Faculty> *masterFaculty;
 
-    GenStack<BST<Student>> *studStack;
-    GenStack<BST<Faculty>> *facStack;
+    GenStack<BST<Student>> *studentStack;
+    GenStack<BST<Faculty>> *facultyStack;
 
     Data();
     ~Data();
-    void printS();
-    void printF();
-    void findS();
-    void findF();
+    void printStudents();
+    void printFaculty();
+    void findStudent();
+    void findFaculty();
     void getAdvisor();
     void getStudents();
     void addStudent();
