@@ -19,7 +19,7 @@ class NaiveList{
     int find(T val);
     void printList();
     unsigned int getSize();
-    ListNode<T> remove(T key);
+    ListNode<T>* remove(T key);
 };
 
 template <class T>
@@ -142,7 +142,7 @@ ListNode<T>* NaiveList<T>::remove(T key){
   if(curr == front){
     front = curr->next;
   } else{
-    curr->prev->next = current->next;
+    curr->prev->next = curr->next;
   }
   if(curr == back){
     back = curr->prev;
