@@ -37,7 +37,7 @@ BST<T>::~BST(){
 template <class T>
 void BST<T>::insert(T val){
   TreeNode<T> *node = new TreeNode<T>(val);
-
+  // if tree is empty, new node becomes root
   if(isEmpty()){
     root = node;
   } else{
@@ -64,11 +64,13 @@ void BST<T>::insert(T val){
 
 template <class T>
 bool BST<T>::contains(T val){
+  // empty tree
   if(root == NULL){
     return false;
   } else{
     TreeNode<T> *curr = root;
     while(curr->key != val){
+      // if tree doesn't have input
       if(curr == NULL){
         return false;
       }
