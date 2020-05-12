@@ -162,24 +162,26 @@ void Data::deleteFaculty(){
   cout << "Enter Faculty ID to transfer students: " << endl;
   cin >> input2;
 
-  Faculty f(stoi(input1));
-  Faculty t(stoi(input2));
-  // check if both ID's are in the system
-  if(masterFaculty->contains(t) && masterFaculty->contains(f)){
-    NaiveList<int>* old = masterFaculty->search(f).adv;
-    while(old->getSize() != 0){
-      int id = old->removeFront();
-      Student s = Student(id);
-      // change each of the students' advisors to the new advisor
-      masterStudent->search(s).setAdv(stoi(input2));
-      // add each of the students to their new advisor's list of students
-      masterFaculty->search(t).adv->insertFront(id);
+  if(input1 != input2){
+    Faculty f(stoi(input1));
+    Faculty t(stoi(input2));
+    // check if both ID's are in the system
+    if(masterFaculty->contains(t) && masterFaculty->contains(f)){
+      NaiveList<int>* old = masterFaculty->search(f).adv;
+      while(old->getSize() != 0){
+        int id = old->removeFront();
+        Student s = Student(id);
+        // change each of the students' advisors to the new advisor
+        masterStudent->search(s).setAdv(stoi(input2));
+        // add each of the students to their new advisor's list of students
+        masterFaculty->search(t).adv->insertFront(id);
+      }
+      masterFaculty->deleteRec(f);
+      studentStack->push(*masterStudent);
+      facultyStack->push(*masterFaculty);
+    } else{
+      cout << "Faculty not found." << endl;
     }
-    masterFaculty->deleteRec(f);
-    studentStack->push(*masterStudent);
-    facultyStack->push(*masterFaculty);
-  } else{
-    cout << "Faculty not found." << endl;
   }
 }
 
