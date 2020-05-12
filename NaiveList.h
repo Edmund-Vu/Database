@@ -37,8 +37,10 @@ NaiveList<T>::~NaiveList(){
 template <class T>
 void NaiveList<T>::insertFront(T d){
   ListNode<T> *node = new ListNode<T>(d);
+  // empty list
   if(size == 0){
     back = node;
+  // non-empty list
   } else{
     front->prev = node;
     node->next = front;
@@ -50,8 +52,10 @@ void NaiveList<T>::insertFront(T d){
 template <class T>
 T NaiveList<T>::removeFront(){
   ListNode<T> *temp = front;
+  // is the only node in the list
   if(front->next == NULL){
     back = NULL;
+  // if there is more than one node
   } else{
     front->next->prev = NULL;
   }
@@ -66,8 +70,10 @@ T NaiveList<T>::removeFront(){
 template <class T>
 T NaiveList<T>::removeBack(){
   ListNode<T> *temp = back;
+  // only node in list
   if(back->prev == NULL){
     front = NULL;
+  // if there is more than one node
   } else{
     back->prev->next = NULL;
   }
@@ -85,12 +91,13 @@ T NaiveList<T>::deletePos(int pos){
   int idx = 0;
   ListNode<T> *curr = front;
   ListNode<T> *prev = front;
+  // setting the pointer to the right node
   while(idx != pos){
     prev = curr;
     curr = curr->next;
     ++idx;
   }
-
+  // now that we found the position of the node, we can delete
   prev->next = curr->next;
   curr->next = NULL;
   T d = curr->data;
@@ -100,12 +107,15 @@ T NaiveList<T>::deletePos(int pos){
 
 template <class T>
 int NaiveList<T>::find(T val){
+  // set to -1 to account for initial increment
   int idx = -1;
   ListNode<T> *curr = front;
   while(curr != NULL){
     ++idx;
+    // breaks if the value is found
     if(curr->data = val){
       break;
+    // if the value is incorrect, update pointer and iterate again
     } else{
       curr = curr->next;
     }
@@ -119,6 +129,7 @@ int NaiveList<T>::find(T val){
 template <class T>
 void NaiveList<T>::printList(){
   ListNode<T> *curr = front;
+  // iterates through the list, printing until curr is NULL
   while(curr != NULL){
     cout << curr->data << endl;
     curr = curr->next;
