@@ -182,6 +182,8 @@ void Data::deleteFaculty(){
     } else{
       cout << "Faculty not found." << endl;
     }
+  } else{
+    cout << "Please input different IDs" << endl;
   }
 }
 
